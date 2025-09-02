@@ -2,7 +2,7 @@
 
 int main (){
 
-    double temperateurEnC,temperateurEnK,K;
+    double temperateurEnC,K;
 
     printf("donner la temperateur en celsius :");
     scanf("%f",&temperateurEnC);
