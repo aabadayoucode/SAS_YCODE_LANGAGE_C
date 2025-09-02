@@ -1,23 +1,39 @@
 #include <stdio.h>
 
-int main() {
-    int nombre;
-    int i;
-
-    // Lire un entier
-    printf("Entrez un nombre entier : ");
-    scanf("%d", &nombre);
-
-    // Affichage en hexadécimal
-    printf("Hexadécimal : %X\n", nombre);
-
-    // Affichage en binaire
-    printf("Binaire : ");
-    for (i = sizeof(int) * 8 - 1; i >= 0; i--) {
-        int bit = (nombre >> i) & 1;
-        printf("%d", bit);
+void afficherBinaire(int n) {
+    if (n == 0) {
+        printf("0");
+        return;
     }
-    printf("\n");
+
+    int bits[32];
+    int i = 0;
+
+    while (n > 0) {
+        bits[i] = n % 2;  
+        n = n / 2;        
+        i++;
+    }
+
+    for (int j = i - 1; j >= 0; j--) {
+        printf("%d", bits[j]);
+    }
+}
+
+int main() {
+    int nombre ;
+
+    printf("donner un nombre : \n");
+    scanf("%d",&nombre);
+
+
+
+    printf("Binaire : ");
+    afficherBinaire(nombre);
+
+    printf("\n ");
+    
+    printf("Hixadicimal %X\n",nombre );
 
     return 0;
 }
