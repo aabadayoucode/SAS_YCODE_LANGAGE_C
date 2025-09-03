@@ -29,7 +29,9 @@ int main() {
     } else {
         x1 = (-b + sqrt(del)) / (2.0 * a);
         x2 = (-b - sqrt(del)) / (2.0 * a);
-        printf("Deux solutions  : x1 = %.2f, x2 = %.2f\n", x1, x2);
+        printf("Deux solutions +
+            
+            : x1 = %.2f, x2 = %.2f\n", x1, x2);
     }
 
     return 0;
