@@ -47,12 +47,16 @@ Le projet consiste à créer un programme en C qui permet de gérer le stock de 
 #include <string.h>
 
 #define Ttaille 5
-#define Tauteur 50
-#define Ttitre 50
+#define NbrChain 50
 
 int main () {
 
     int nombre;
+    char titres[Ttaille][NbrChain];
+    char auteurs[Ttaille][NbrChain];
+    float prixs[Ttaille];
+    int quentites[Ttaille];
+    int nbrLivre = 0;
 
    do
    {
@@ -70,11 +74,8 @@ int main () {
     scanf("%d",&nombre);
     getchar();
 
-    char titres[Ttaille][Ttitre];
-    char auteurs[Ttaille][Tauteur];
-    float prixs[Ttaille];
-    int quentites[Ttaille];
-    int nbrLivre = 0;
+
+  
 
     switch (nombre)
     {
@@ -84,12 +85,12 @@ int main () {
             printf("Le stock est plien \n");
         }else {
             printf("Donner le titre du livre : ");
-            fgets(titres[nbrLivre], Ttitre, stdin);
+            fgets(titres[nbrLivre], NbrChain, stdin);
             titres[nbrLivre][strcspn(titres[nbrLivre], "\n")] = '\0';
 
 
             printf("Donner l'auteur du livre : ");
-            fgets(auteurs[nbrLivre],Tauteur,stdin);
+            fgets(auteurs[nbrLivre],NbrChain,stdin);
             auteurs[nbrLivre][strcspn(auteurs[nbrLivre], "\n")] = '\0';
 
             printf("Donner le prix du livre : ");
@@ -105,8 +106,24 @@ int main () {
         
         break;
     case 2:
+        if (nbrLivre == 0)
+        {
+            printf("pas des livre !");
+        }else { 
+            printf("\n-----la liste des livres : \n");
+            for (int i = 0; i < nbrLivre ; i++)
+            {   
+                printf("%d: ",i+1);
+                printf("le titre :%s ",titres[i]);
+                printf("l\'auteur :%s ",auteurs[i]);
+                printf("le prix :%.0f DH ",prixs[i]);
+                printf("la quentites :%d ",quentites[i]);
+                printf("\n");
+            };
+            printf("------------------------\n");
+          }
+          break;
         
-        break;
     case 3:
         
         break;
