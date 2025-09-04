@@ -44,33 +44,64 @@ Le projet consiste à créer un programme en C qui permet de gérer le stock de 
 
 
 #include <stdio.h>
-const taille = 5;
+#include <string.h>
+
+#define Ttaille 5
+#define Tauteur 50
+#define Ttitre 50
 
 int main () {
-    
+
     int nombre;
+
+   do
+   {
     
-    printf("1. Ajouter un livre au stock.");
-    printf("2. Afficher tous les livres disponibles.");
-    printf("3. Rechercher un livre par son titre.");
-    printf("4. Mettre à jour la quantité d'un livre.");
-    printf("5. Supprimer un livre du stock.");  
-    printf("6. Afficher le nombre total de livres en stock.");  
-    printf("7. quiter");  
+    
+    printf("1. Ajouter un livre au stock \n");
+    printf("2. Afficher tous les livres disponibles \n");
+    printf("3. Rechercher un livre par son titre \n");
+    printf("4. Mettre a jour la quantite dun livre \n");
+    printf("5. Supprimer un livre du stock \n");  
+    printf("6. Afficher le nombre total de livres en stock \n");  
+    printf("7. quiter \n");  
 
     printf("Choise un nombre : ");
     scanf("%d",&nombre);
+    getchar();
 
-    char titres[taille][50];
-    char auteurs[taille][50];
-    float prixs[taille][50];
-    int quentites[taille][50];
+    char titres[Ttaille][Ttitre];
+    char auteurs[Ttaille][Tauteur];
+    float prixs[Ttaille];
+    int quentites[Ttaille];
+    int nbrLivre = 0;
 
     switch (nombre)
     {
     case 1:
-        printf("donner le titre du livre : ");
-        scanf("%d",&titres[0]);
+        if (nbrLivre >= Ttaille )
+        {
+            printf("Le stock est plien \n");
+        }else {
+            printf("Donner le titre du livre : ");
+            fgets(titres[nbrLivre], Ttitre, stdin);
+            titres[nbrLivre][strcspn(titres[nbrLivre], "\n")] = '\0';
+
+
+            printf("Donner l'auteur du livre : ");
+            fgets(auteurs[nbrLivre],Tauteur,stdin);
+            auteurs[nbrLivre][strcspn(auteurs[nbrLivre], "\n")] = '\0';
+
+            printf("Donner le prix du livre : ");
+            scanf("%f", &prixs[nbrLivre]);
+            getchar();
+
+            printf("Donner la quantite du livre : ");
+            scanf("%d",&quentites[nbrLivre]); 
+            getchar();
+
+            nbrLivre += 1;
+        }
         
         break;
     case 2:
@@ -92,9 +123,11 @@ int main () {
         printf(" Au revoir !");
         break;
     default:
-        printf("il faut donner une valeur entre 1 et 7 ");
+        printf("\n Il faut donner une valeur entre 1 et 7 ! \n ");
         break;
     }
 
+   } while (nombre != 7);
+   
     return 0;
 }
